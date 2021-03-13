@@ -645,6 +645,62 @@
 									"body": "{\n \"code\": -80346588,\n \"message\": \"Duis cillum ut non\"\n}"
 								}
 							]
+						},
+						{
+							"name": "Delete a DNA",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\" Check delete status\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.data).to.eql(\"Resource deleted successfully\");\r",
+											"\r",
+											"   \r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{org_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/dnas/{{dnaID}}",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"dnas",
+										"{{dnaID}}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
