@@ -483,9 +483,7 @@
 									"\r",
 									"const jsonData = pm.response.json();\r",
 									"\r",
-									" pm.test(\"Test data type of the id response\", () => {\r",
-									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
-									"    });"
+									""
 								],
 								"type": "text/javascript"
 							}

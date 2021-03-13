@@ -357,8 +357,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"id\", 8194)\r",
-											"pm.collectionVariables.set(\"external_case_id\", \"2004H2016\")\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript"
@@ -495,8 +494,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"id\", 8192)\r",
-											"pm.collectionVariables.set(\"mito_sequence_number\", \"212\")"
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -514,10 +512,10 @@
 											"        });",
 											"",
 											"    pm.test(\"Test data type of the id response\", () => {",
-											"    pm.expect(jsonData.data.id).to.eql(pm.collectionVariables.get('id'));",
+											"    pm.expect(jsonData.data.id).to.eql(8192);",
 											"    });",
 											"      pm.test(\"Test value updated for the mitosequencenumber response\", () => {",
-											"    pm.expect(jsonData.data.mito_sequence_number).to.eql(pm.collectionVariables.get('mito_sequence_number'));",
+											"    pm.expect(jsonData.data.mito_sequence_number).to.eql(\"212\");",
 											"    });",
 											"",
 											"    pm.test(\"Test status of the response\", () => {",
