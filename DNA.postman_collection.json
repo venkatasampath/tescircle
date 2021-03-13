@@ -666,10 +666,10 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"const dnaschema = JSON.parse(pm.environment.get(\"dnaschema\"));",
+					"const dnaschemacollection = JSON.parse(pm.environment.get(\"dnaschemacollection\"));",
 					"if (pm.info.requestName !==\"Delete DNA\") {",
 					"pm.test('Schema is valid', function () {",
-					"  pm.response.to.have.jsonSchema(dnaschema)",
+					"  pm.response.to.have.jsonSchema(dnaschemacollection)",
 					"});}",
 					"pm.test(\"Response time is less than 20s\", function () {",
 					"    pm.expect(pm.response.responseTime).to.be.below(20000);",
