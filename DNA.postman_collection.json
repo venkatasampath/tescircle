@@ -504,34 +504,7 @@
 									"script": {
 										"exec": [
 											"const jsonData = pm.response.json();",
-											"if (jsonData.status === \"success\"){",
-											"    pm.test(\"Status code is 200. Successfully updated the dna data.\");",
 											"",
-											"    pm.test(\"Application name is correct from the response\", () => {",
-											"    pm.expect(jsonData.meta.app).to.be.a(\"string\",\"CoRA - Commingled Remains Analytics\");",
-											"        });",
-											"",
-											"    pm.test(\"Test data type of the id response\", () => {",
-											"    pm.expect(jsonData.data.id).to.eql(8192);",
-											"    });",
-											"      pm.test(\"Test value updated for the mitosequencenumber response\", () => {",
-											"    pm.expect(jsonData.data.mito_sequence_number).to.eql(\"212\");",
-											"    });",
-											"",
-											"    pm.test(\"Test status of the response\", () => {",
-											"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");",
-											"    });",
-											"",
-											"    pm.test(\"Test the dna update successful\",() => {",
-											"    pm.expect(jsonData.message).to.eql(\"Dnas update successful.\");",
-											"    });",
-											"} ",
-											"else if (jsonData.message === \"Unauthenticated.\"){",
-											"    pm.test(\"Error. Please provide the authentication.\");",
-											"}",
-											"else {",
-											"    pm.test(\"Error. Please check the request again.\")",
-											"}",
 											"pm.test(\"Response time is less than 2000ms\", function () {",
 											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 											"});"
@@ -589,7 +562,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "8192\n",
+											"value": "2596\n",
 											"type": "string",
 											"description": "(Required) "
 										}
