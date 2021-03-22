@@ -645,6 +645,66 @@
 									"body": "{\n \"code\": -80346588,\n \"message\": \"Duis cillum ut non\"\n}"
 								}
 							]
+						},
+						{
+							"name": "Delete a DNA",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"if (jsonData.data === \"Resource deleted successfully\"){\r",
+											"    pm.test(\"Resource deleted successfully\");\r",
+											"} \r",
+											"else if (jsonData.message === \"Unauthenticated.\"){\r",
+											"    pm.test(\"Error. Please provide the authentication.\");\r",
+											"}\r",
+											"else {\r",
+											"    pm.test(\"Error!!!Data not found.Please enter a valid id.\");\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{org_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/dnas/{{dnaID}}",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"dnas",
+										"{{dnaID}}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
