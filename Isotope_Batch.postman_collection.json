@@ -1402,9 +1402,7 @@
 									"if (jsonData.status === \"success\"){\r",
 									"    \r",
 									"\r",
-									"    pm.test(\"Test data type of the id response\", () => {\r",
-									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
-									"    });\r",
+									"    \r",
 									"\r",
 									"    pm.test(\"Test status of the response\", () => {\r",
 									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
@@ -1429,7 +1427,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{anthro_analyst_token}}",
+									"value": "{{dna_tolken}}",
 									"type": "string"
 								}
 							]
