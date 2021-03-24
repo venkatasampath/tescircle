@@ -590,7 +590,7 @@
 					]
 				},
 				{
-					"name": "GET all Isotpe Batches",
+					"name": "GET all Isotope Batches",
 					"event": [
 						{
 							"listen": "test",
@@ -1147,6 +1147,623 @@
 						}
 					]
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const isotopebatchschema = JSON.parse(pm.environment.get(\"isotopebatchschema\"));",
+							"pm.test('Schema is valid', function () {",
+							"   pm.response.to.have.jsonSchema(isotopebatchschema)",
+							"});",
+							"pm.test(\"body check is passed\", () => {",
+							"    pm.response.to.have.jsonBody(\"data\");",
+							"   ",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Negative Test",
+			"item": [
+				{
+					"name": "Create Invalid Isotopebatch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anthro_analyst_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\"org_id\": \"2\",\r\n\t\"project_id\": \"2\",\r\n\t\"se_id\": \"4032\",\r\n\t\"sb_id\": \"37\",\r\n\t\"lab_id\": \"1\",\r\n\t\"sample_number\": \"02X\",\r\n\t\"external_case_id\": \"2004H2016\",\r\n\t\"mito_sequence_number\": \"212\",\r\n\t\"mito_sequence_subgroup\": \"a\",\r\n\t\"mito_sequence_similar\": \"212\",\r\n\t\"mito_match_count\": \"10\",\r\n    \"mito_total_count\": \"10000\",\r\n    \"mito_receive_date\": \"2020-01-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/isotope",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all isotopeBatch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anthro_analyst_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/isotope/batches",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"batches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invalid Isotope Batch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anthro_analyst_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"org_id\": 2,\r\n        \"project_id\": 2,\r\n        \"lab_id\": 5,\r\n        \"external_case_id\": \"55529Nm\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/isotope/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Project Isotopes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anthro_analyst_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/isotope/projectisotopes",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"projectisotopes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Associated Isotopes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dna_tolken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/isotope/associatedisotopes",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"associatedisotopes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Isotope batch details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dna_tolken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/isotope/batch/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"batch",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Associate Isotopes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dna_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/isotope/batch/:batch/associateisotopes",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"batch",
+								":batch",
+								"associateisotopes"
+							],
+							"variable": [
+								{
+									"key": "batch",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Isotope Batch Startprocessing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dna_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/isotope/batch/:batch/startprocessing",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"isotope",
+								"batch",
+								":batch",
+								"startprocessing"
+							],
+							"variable": [
+								{
+									"key": "batch",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"response must not be valid as the input paramaters are invalid\", () => {",
+							"    //pm.response.to.have.jsonBody(\"data\");",
+							"    //pm.response.to.have.jsonBody(\"data.nodes\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].id\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].key\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].key_bone_side\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].group\");",
+							"   ",
+							"",
+							"});",
+							""
+						]
+					}
+				}
 			]
 		}
 	],
@@ -1165,21 +1782,12 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"const isotopebatchschema = JSON.parse(pm.environment.get(\"isotopebatchschema\"));",
-					"pm.test('Schema is valid', function () {",
-					"   pm.response.to.have.jsonSchema(isotopebatchschema)",
-					"});",
-					"      ",
-					"     ",
 					"",
 					"pm.test(\"Check the active environment\", () => {",
 					"  pm.expect(pm.environment.name).to.eql(\"Testing\");",
 					"});",
 					"",
-					"pm.test(\"body check is passed\", () => {",
-					"    pm.response.to.have.jsonBody(\"data\");",
-					"   ",
-					"});"
+					""
 				]
 			}
 		}

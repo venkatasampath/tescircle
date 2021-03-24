@@ -709,6 +709,304 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Negative Test",
+			"item": [
+				{
+					"name": "Get wrong Dna Detail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//This request is trying to get wrong dna id and check if data is returing ot not.\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Not having view access for the user\", function () {\r",
+									"   //pm.response.to.not.be.Body;\r",
+									"   pm.response.to.not.have.jsonBody(\"status\");\r",
+									"    //pm.expect(jsonData.status).contains(false)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{isotope_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/dnas/2592",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"dnas",
+								"2592"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invalid DNA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Not having Update access for the user\", function () {\r",
+									"   //pm.response.to.not.be.Body;\r",
+									"   pm.response.to.not.have.jsonBody(\"status\");\r",
+									"    //pm.expect(jsonData.status).contains(false)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anthro_analyst_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"sample_number\": \"springteam2021\",\r\n\t\"mito_sequence_number\": \"212\",\r\n\t\"mito_sequence_subgroup\": \"a\",\r\n\t\"mito_sequence_similar\": \"212\",\r\n\t\"mito_match_count\": \"10\",\r\n    \"mito_total_count\": \"110010\",\r\n    \"mito_receive_date\": \"2020-01-18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/dnas/:id",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"dnas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2592"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invalid all DNAs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{isotope_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/dnas",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"dnas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invalid Dna",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.status === \"success\"){\r",
+									"    \r",
+									"\r",
+									"    pm.test(\"Test data type of the id response\", () => {\r",
+									"    pm.expect(jsonData.data.id).to.be.a(\"number\");\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Test status of the response\", () => {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\",\"success\");\r",
+									"    });\r",
+									"} \r",
+									"else if (jsonData.message === \"This action is unauthorized.\"){\r",
+									"    pm.test(\"Error. Please provide the authentication.\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.test(\"Error. Please check the request again.\")\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{isotope_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\"org_id\": \"2\",\r\n\t\"project_id\": \"2\",\r\n\t\"se_id\": \"4032\",\r\n\t\"sb_id\": \"37\",\r\n\t\"lab_id\": \"1\",\r\n\t\"sample_number\": \"02X\",\r\n\t\"external_case_id\": \"2004H2016\",\r\n\t\"mito_sequence_number\": \"212\",\r\n\t\"mito_sequence_subgroup\": \"a\",\r\n\t\"mito_sequence_similar\": \"212\",\r\n\t\"mito_match_count\": \"10\",\r\n    \"mito_total_count\": \"10000\",\r\n    \"mito_receive_date\": \"2020-01-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/dnas",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"dnas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response must not be valid as the input paramaters are invalid\", () => {",
+							"    //pm.response.to.have.jsonBody(\"data\");",
+							"    //pm.response.to.have.jsonBody(\"data.nodes\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].id\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].key\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].key_bone_side\");",
+							"    pm.response.to.not.have.jsonBody(\"data.nodes[0].group\");",
+							"   ",
+							"",
+							"});",
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"event": [
