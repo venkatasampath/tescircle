@@ -704,7 +704,119 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Delete a DNA",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/dnas/{{dnaID}}",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"dnas",
+												"{{dnaID}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 27 Mar 2021 15:36:05 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-Ratelimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-Ratelimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self'; base-uri 'none'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://use.fontawesome.com data: https:; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://cora-docs.readthedocs.io https://www.youtube.com https://content.googleapis.com https://accounts.google.com; img-src 'self' https://maps.gstatic.com https://developers.google.com https://maps.googleapis.com https://www.google-analytics.com https://www.googletagmanager.com https://chart.googleapis.com https://spawaskar-cora.s3.us-west-2.amazonaws.com https://spawaskar-cora-cat.s3.us-west-2.amazonaws.com data: https:; manifest-src 'none'; media-src https://www.youtube.com https://m.youtube.com https://youtubei.googleapis.com https://youtube.googleapis.com https://www.youtube-nocookie.com; object-src https://cora-docs.readthedocs.io; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ajax.googleapis.com https://maps.googleapis.com https://developers.google.com https://code.jquery.com https://www.googletagmanager.com https://www.google-analytics.com https://tagmanager.google.com https://stackpath.bootstrapcdn.com https://cdnjs.cloudflare.com https://cdn.datatables.net https://s3.amazonaws.com https://www.youtube.com https://d3js.org https://vizjs.org https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://developers.google.com https://stackpath.bootstrapcdn.com https://cdnjs.cloudflare.com https://cdn.datatables.net https://use.fontawesome.com https:; worker-src 'none'; report-uri https://spawaskar.report-uri.com/r/d/csp/enforce"
+										},
+										{
+											"key": "Feature-Policy",
+											"value": "accelerometer 'self'; ambient-light-sensor 'self'; camera 'self'; fullscreen 'self'; geolocation 'self'; gyroscope 'self'; magnetometer 'self'; microphone 'self'; midi 'self'; payment 'self'; speaker 'self'; usb 'self'; vr 'self'"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains; preload"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "sameorigin"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-Xss-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "strict-origin-when-cross-origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Authorization"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 vegur"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"Resource deleted successfully\"\n}"
+								}
+							]
 						}
 					]
 				}
@@ -724,7 +836,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"const dnaschemacollection = JSON.parse(pm.environment.get(\"dnaschemacollection\"));",
+							"const dnaschemacollection = JSON.parse(pm.environment.get(\"dnaschemacollection1\"));",
 							"if (pm.info.requestName !==\"Delete DNA\") {",
 							"pm.test('Schema is valid', function () {",
 							"  pm.response.to.have.jsonSchema(dnaschemacollection)",
@@ -1107,17 +1219,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"const dnaschemacollection = JSON.parse(pm.environment.get(\"dnaschemacollection\"));",
-					"if (pm.info.requestName !==\"Delete DNA\") {",
-					"pm.test('Schema is valid', function () {",
-					"  pm.response.to.have.jsonSchema(dnaschemacollection)",
-					"});}",
-					"pm.test(\"Response time is less than 20s\", function () {",
-					"    pm.expect(pm.response.responseTime).to.be.below(20000);",
-					"});",
-					"pm.test(\"Check the active environment\", () => {",
-					"  pm.expect(pm.environment.name).to.eql(\"Testing\");",
-					"});",
+					"",
 					""
 				]
 			}
@@ -1136,19 +1238,23 @@
 		},
 		{
 			"key": "baseUrl",
-			"value": "{{base_url}}/api"
+			"value": "{{base_url}}/api",
+			"disabled": true
 		},
 		{
 			"key": "id",
-			"value": 8192
+			"value": 8192,
+			"disabled": true
 		},
 		{
 			"key": "external_case_id",
-			"value": "2004H2016"
+			"value": "2004H2016",
+			"disabled": true
 		},
 		{
 			"key": "mito_sequence_number",
-			"value": "212"
+			"value": "212",
+			"disabled": true
 		}
 	]
 }
