@@ -9,22 +9,22 @@ jobs:
       - newman/newman-run:
           collection: ./DNA.postman_collection.json
           environment: ./Testing.postman_environment.json
-  Isotopebatch-collection-run:
+  Specimen-collection-run:
     executor: newman/postman-newman-docker
     steps:
       - checkout
       - newman/newman-run:
-          collection: ./Isotope_Batch.postman_collection.json
+          collection: ./Specimen_final.postman_collection.json
           environment: ./Testing.postman_environment.json
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - Isotopebatch-collection-run 
+      - Specimen-collection-run 
       - Dna-collection-run:
           requires:
-            - Isotopebatch-collection-run
+            - Specimen-collection-run
         
     
       
