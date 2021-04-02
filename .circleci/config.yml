@@ -15,7 +15,7 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - Dna-collection-run: 
+      - Dna-collection-run
       
     
       
