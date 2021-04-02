@@ -15,7 +15,11 @@ workflows:
   version: 2
   workflow:
     jobs:
+<<<<<<< HEAD
       - Dna-collection-run
+=======
+      - Dna-collection-run 
+>>>>>>> 74462179374d28a48cd5098c9a4edb46d6380d8b
       
     
       
