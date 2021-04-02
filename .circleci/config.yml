@@ -14,17 +14,17 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          collection: ./Specimen_final.postman_collection.json
+          collection: ./DNA.postman_collection.json
           environment: ./Testing.postman_environment.json
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - Specimen-collection-run 
+      - Dna-collection-run: 
       - Dna-collection-run:
           requires:
-            - Specimen-collection-run
+            - Dna-collection-run
         
     
       
