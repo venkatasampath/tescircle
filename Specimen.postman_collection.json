@@ -9973,6 +9973,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -10073,6 +10078,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10191,6 +10201,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -10240,6 +10255,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10293,6 +10313,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -10342,6 +10367,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10395,6 +10425,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -10422,7 +10457,7 @@
 								"bearer": [
 									{
 										"key": "token",
-										"value": "{{token}}",
+										"value": "{{org_token}}",
 										"type": "string"
 									}
 								]
@@ -10442,23 +10477,20 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
-											"pm.test(\"General save test\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.value);",
-											"});",
-											"",
-											"pm.test(\"Content-Type is present\", function () {",
-											"    pm.response.to.have.header(\"Content-Type\");",
-											"});",
-											"",
+											"const jsonData = pm.response.json()",
+											"var statusCode = pm.response.code",
+											"if(statusCode == 200){",
 											"pm.test(\"Body matches string\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Resource updated successfully\");",
 											"});",
-											"",
 											"pm.test(\"response must be valid and have a body\", function () {",
 											"     pm.response.to.be.withBody;",
 											"     pm.response.to.be.json;",
 											"});",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"}",
 											""
 										]
 									}
@@ -10555,6 +10587,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"url": {
@@ -10605,6 +10642,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10659,6 +10701,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"url": {
@@ -10709,6 +10756,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10763,6 +10815,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"url": {
@@ -10813,6 +10870,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10867,6 +10929,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"url": {
@@ -10917,6 +10984,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -10971,6 +11043,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"url": {
@@ -11021,6 +11098,11 @@
 										"header": [
 											{
 												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
 											}
@@ -11078,6 +11160,11 @@
 												"key": "Content-Type",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -11110,7 +11197,7 @@
 								"bearer": [
 									{
 										"key": "token",
-										"value": "{{token}}",
+										"value": "{{org_token}}",
 										"type": "string"
 									}
 								]
@@ -11130,10 +11217,15 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
+											"",
+											"const jsonData = pm.response.json()",
+											"var statusCode = pm.response.code",
+											"if(statusCode == 200){",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
 											"});",
 											"",
+											"if(statusCode == 200){",
 											"pm.test(\"response should be okay to process\", function () {",
 											"    pm.response.to.not.be.error;",
 											"    pm.response.to.be.json;",
@@ -11144,9 +11236,9 @@
 											"",
 											"pm.test(\"Response time is less than 200ms\", function () {",
 											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
-											"});",
+											"});}",
 											"",
-											""
+											"}"
 										]
 									}
 								}
@@ -11171,7 +11263,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status Code Test\", () => {",
-							"pm.expect(pm.response.code).to.be.oneOf([200,201,403,404,400,422, 401, 500]);",
+							"pm.expect(pm.response.code).to.be.oneOf([200,201,403,404,400,422, 401,429,500]);",
 							"});",
 							"",
 							"pm.test(\"Check the active environment\", () => {",
@@ -11186,6 +11278,8 @@
 							"}",
 							"",
 							"const jsonData = pm.response.json()",
+							"const Specimenschema2 = JSON.parse(pm.environment.get(\"Specimenschema2\"));",
+							"var statusCode = pm.response.code",
 							"",
 							"pm.test(\"Data, Status & Meta Test\", () => {",
 							"    if(jsonData.meta == true){",
@@ -11198,13 +11292,6 @@
 							"});",
 							"",
 							"",
-							"const Specimenschema2 = JSON.parse(pm.environment.get(\"Specimenschema2\"));",
-							"var statusCode = pm.response.code",
-							"if(statusCode == 200){",
-							"pm.test('Schema is valid', function () {",
-							"    pm.response.to.have.jsonSchema(Specimenschema2)",
-							"});",
-							"}",
 							"",
 							"",
 							"",
