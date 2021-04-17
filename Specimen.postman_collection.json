@@ -9768,22 +9768,22 @@
 											"pm.test(\"Saving the returned values\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    var se_id = jsonData.data.se_id",
-											"    pm.collectionVariables.set(\"general:se_id\", se_id);",
+											"    pm.environment.set(\"general:se_id\", se_id);",
 											"    var type = jsonData.data.type",
-											"    pm.collectionVariables.set(\"general:type\", type);",
+											"    pm.environment.set(\"general:type\", type);",
 											"    var original = jsonData.data.original",
-											"    pm.collectionVariables.set(\"general:original\", original);",
+											"    pm.environment.set(\"general:original\", original);",
 											"    var review = jsonData.data.review",
-											"    pm.collectionVariables.set(\"general:review\", review);",
+											"    pm.environment.set(\"general:review\", review);",
 											"",
 											"});",
 											"",
 											"    pm.test(\" Check the correct returned values\", function () {",
 											"    var jsonData = pm.response.json();",
-											"    var se_id = pm.collectionVariables.get(\"general:se_id\")",
-											"    var type = pm.collectionVariables.get(\"general:type\")",
-											"    var original = pm.collectionVariables.get(\"general:original\")",
-											"    var review = pm.collectionVariables.get(\"general:review\")",
+											"    var se_id = pm.environment.get(\"general:se_id\")",
+											"    var type = pm.environment.get(\"general:type\")",
+											"    var original = pm.environment.get(\"general:original\")",
+											"    var review = pm.environment.get(\"general:review\")",
 											"    ",
 											"     pm.expect(jsonData.data.se_id).to.eql(se_id);",
 											"    pm.expect(jsonData.data.type).to.eql(type);",
@@ -11672,15 +11672,15 @@
 		},
 		{
 			"key": "morphology_id",
-			"value": ""
+			"value": 1081
 		},
 		{
 			"key": "morphology_name",
-			"value": ""
+			"value": "CIL 2003-116:G-27:X-184F:604"
 		},
 		{
 			"key": "morphology_key",
-			"value": ""
+			"value": "CIL 2003-116:G-27:X-184F:604"
 		},
 		{
 			"key": "refits_id",
