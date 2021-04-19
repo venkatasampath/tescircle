@@ -4049,78 +4049,6 @@
 							"name": "Negative tests",
 							"item": [
 								{
-									"name": "Edit Zone",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"// This negative test is to edit a zone giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a zone.\r",
-													"\r",
-													"pm.test(\"Missing parameters\", function () {\r",
-													"    var jsonData = pm.response.json();\r",
-													"     console.log(jsonData)\r",
-													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);\r",
-													"   \r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"response must be not valid and not have a body\", function () {\r",
-													"     pm.response.to.not.be.ok;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header is application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{org_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n\t\"type\": \"zones\"\r\n\t\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=zones",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"api",
-												"specimens",
-												"{{spec_val}}",
-												"associations"
-											],
-											"query": [
-												{
-													"key": "type",
-													"value": "zones"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "Negative Put Specimen Zones token",
 									"event": [
 										{
@@ -4211,6 +4139,78 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n\t\"type\": \"zones\",\r\n\t\"listIds\": {\r\n\t\t\"1\":{\"id\":null,\"presence\":true}\r\n      \r\n\t}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=zones",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"specimens",
+												"{{spec_val}}",
+												"associations"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "zones"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Zone",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// This negative test is to edit a zone giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a zone.\r",
+													"\r",
+													"pm.test(\"Missing parameters\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"     console.log(jsonData)\r",
+													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);\r",
+													"   \r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"response must be not valid and not have a body\", function () {\r",
+													"     pm.response.to.not.be.ok;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header is application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{org_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"type\": \"zones\"\r\n\t\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4669,75 +4669,6 @@
 							"name": "Negative tests",
 							"item": [
 								{
-									"name": "Edit Taphonomy",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"// This negative test is to edit a taphonomy giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a taphonomy.\r",
-													"\r",
-													"pm.test(\"Missing parameters\", function () {\r",
-													"    var jsonData = pm.response.json();\r",
-													"     console.log(jsonData)\r",
-													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);\r",
-													"   \r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"response must be not valid and not have a body\", function () {\r",
-													"     pm.response.to.not.be.ok;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header is application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{org_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=taphonomys",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"api",
-												"specimens",
-												"{{spec_val}}",
-												"associations"
-											],
-											"query": [
-												{
-													"key": "type",
-													"value": "taphonomys"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "Edit Taphonomy Token",
 									"event": [
 										{
@@ -4832,6 +4763,75 @@
 												"specimens",
 												"{{spec_val}}",
 												"associations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Taphonomy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// This negative test is to edit a taphonomy giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a taphonomy.\r",
+													"\r",
+													"pm.test(\"Missing parameters\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"     console.log(jsonData)\r",
+													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);\r",
+													"   \r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"response must be not valid and not have a body\", function () {\r",
+													"     pm.response.to.not.be.ok;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header is application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{org_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=taphonomys",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"specimens",
+												"{{spec_val}}",
+												"associations"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "taphonomys"
+												}
 											]
 										}
 									},
@@ -5241,6 +5241,79 @@
 							"name": "Negative tests",
 							"item": [
 								{
+									"name": "Negative Edit Articulations invalid  id values",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// This test attempts to add articulations with invalid articulation ids. \r",
+													"\r",
+													"pm.test(\"response must be not valid and not have a body\", function () {\r",
+													"     pm.response.to.not.be.ok;\r",
+													"});\r",
+													"\r",
+													"// postman.setNextRequest(\"Negative Edit Articulations Invalid bone\")\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{org_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "\r\n\t{\r\n\t\"type\": \"articulations\",\r\n\t\"listIds\": [xxxx, 1abc, 1 bc, 0000, 99999, a%9!]\r\n    \r\n\r\n}   \r\n  \r\n\r\n      "
+										},
+										"url": {
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"specimens",
+												"{{spec_val}}",
+												"associations"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "articulations",
+													"disabled": true
+												}
+											]
+										},
+										"description": "Negative tests for adding or updating articulations to a specimen."
+									},
+									"response": []
+								},
+								{
 									"name": "Negative Edit Articulations Invalid token",
 									"event": [
 										{
@@ -5337,6 +5410,258 @@
 											]
 										},
 										"description": "Test trying to store an articulation for a specimen using an invalid token/role."
+									},
+									"response": []
+								},
+								{
+									"name": "Negative Edit Morphology Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// This test is looping the diffrent token values of dna and isotope analyst who should not be able to create or edit Morphology. Here we will use postman setnextrequest function to call the same request multiple times. Note: Postman setnextrequest is a collection level command and you have to run the test in  runner for looping to work.",
+													"",
+													"var token = pm.globals.get(\"token\");",
+													"",
+													"",
+													"",
+													"pm.test(\"Check unauthorized message\", function () {",
+													"    var jsonData = pm.response.json();",
+													"     pm.expect(jsonData.message).to.be.oneOf([\"This action is unauthorized.\", \"Unauthenticated.\"] );",
+													"   ",
+													"});",
+													"",
+													"pm.test(\"Content-Type header is application/json\", () => {",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+													"});",
+													"",
+													"pm.test(\"response must be not valid and not have a body\", function () {",
+													"     pm.response.to.not.be.ok;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var token = pm.globals.get(\"token\")",
+													"",
+													"var dnatoken = pm.environment.get(\"dna_analyst_token\")",
+													"var isotopetoken = pm.environment.get(\"isotope_analyst_token\")",
+													"",
+													"if(!token){",
+													"     token = [dnatoken,isotopetoken];",
+													"}",
+													"",
+													"var currenttoken = token.shift();",
+													"",
+													"",
+													"pm.globals.set(\"itoken\", currenttoken);",
+													"pm.globals.set(\"token\", token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{itoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"type\": \"morphologys\",\n\t\"listIds\": [1081]\n\n}  "
+										},
+										"url": {
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"specimens",
+												"{{spec_val}}",
+												"associations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Negative Edit Morphology",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// This negative test is to edit a Morphology giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a morphology.",
+													"",
+													"pm.test(\"Missing parameters\", function () {",
+													"    var jsonData = pm.response.json();",
+													"     console.log(jsonData)",
+													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);",
+													"   ",
+													"});",
+													"",
+													"",
+													"pm.test(\"response must be not valid and not have a body\", function () {",
+													"     pm.response.to.not.be.ok;",
+													"});",
+													"",
+													"pm.test(\"Content-Type header is application/json\", () => {",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{org_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"type\": \"morphologys\"\n\t\n\n}  "
+										},
+										"url": {
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=morphologys",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"specimens",
+												"{{spec_val}}",
+												"associations"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "morphologys"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Negative Edit Refits",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// This negative test is to edit a Refits giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a refit.",
+													"",
+													"pm.test(\"Missing parameters\", function () {",
+													"    var jsonData = pm.response.json();",
+													"     console.log(jsonData)",
+													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);",
+													"   ",
+													"});",
+													"",
+													"",
+													"pm.test(\"response must be not valid and not have a body\", function () {",
+													"     pm.response.to.not.be.ok;",
+													"});",
+													"",
+													"pm.test(\"Content-Type header is application/json\", () => {",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{org_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"type\": \"refits\"\n}   "
+										},
+										"url": {
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=refits",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"specimens",
+												"{{spec_val}}",
+												"associations"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "refits"
+												}
+											]
+										}
 									},
 									"response": []
 								},
@@ -5443,28 +5768,27 @@
 									"response": []
 								},
 								{
-									"name": "Negative Edit Morphology",
+									"name": "Negative Edit Pair Matching Wrong List ID",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"exec": [
-													"// This negative test is to edit a Morphology giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a morphology.",
+													"//This test checks whether we get the correct responses when trying to insert an invalid pair match value.",
 													"",
-													"pm.test(\"Missing parameters\", function () {",
+													"pm.test(\"response must be valid and have a body\", function () {",
+													"     pm.response.to.be.withBody;",
+													"     pm.response.to.be.json;",
+													"});",
+													"",
+													"pm.test(\"Check if object contains all provided properties\", function () {",
 													"    var jsonData = pm.response.json();",
-													"     console.log(jsonData)",
-													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);",
-													"   ",
+													"    pm.expect(jsonData).to.have.property(\"data\");",
 													"});",
 													"",
-													"",
-													"pm.test(\"response must be not valid and not have a body\", function () {",
-													"     pm.response.to.not.be.ok;",
-													"});",
-													"",
-													"pm.test(\"Content-Type header is application/json\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+													" pm.test(\"Check if correct values are returned\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData.data).to.eql(\"Specimens update unsuccessful.\");",
 													"});"
 												],
 												"type": "text/javascript"
@@ -5486,21 +5810,21 @@
 										"header": [
 											{
 												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
+												"type": "text",
+												"value": "application/json"
 											},
 											{
 												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
+												"type": "text",
+												"value": "application/json"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n\t\"type\": \"morphologys\"\n\t\n\n}  "
+											"raw": "{\n\t\"type\": \"pairs\",\n\t\"listIds\":[123412341234]\n}      "
 										},
 										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=morphologys",
+											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations",
 											"host": [
 												"{{base_url}}"
 											],
@@ -5509,14 +5833,9 @@
 												"specimens",
 												"{{spec_val}}",
 												"associations"
-											],
-											"query": [
-												{
-													"key": "type",
-													"value": "morphologys"
-												}
 											]
-										}
+										},
+										"description": "Put for Pair Matching"
 									},
 									"response": []
 								},
@@ -5614,325 +5933,6 @@
 											]
 										},
 										"description": "Put for Pair Matching"
-									},
-									"response": []
-								},
-								{
-									"name": "Negative Edit Morphology Token",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"// This test is looping the diffrent token values of dna and isotope analyst who should not be able to create or edit Morphology. Here we will use postman setnextrequest function to call the same request multiple times. Note: Postman setnextrequest is a collection level command and you have to run the test in  runner for looping to work.",
-													"",
-													"var token = pm.globals.get(\"token\");",
-													"",
-													"",
-													"",
-													"pm.test(\"Check unauthorized message\", function () {",
-													"    var jsonData = pm.response.json();",
-													"     pm.expect(jsonData.message).to.be.oneOf([\"This action is unauthorized.\", \"Unauthenticated.\"] );",
-													"   ",
-													"});",
-													"",
-													"pm.test(\"Content-Type header is application/json\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
-													"});",
-													"",
-													"pm.test(\"response must be not valid and not have a body\", function () {",
-													"     pm.response.to.not.be.ok;",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"exec": [
-													"var token = pm.globals.get(\"token\")",
-													"",
-													"var dnatoken = pm.environment.get(\"dna_analyst_token\")",
-													"var isotopetoken = pm.environment.get(\"isotope_analyst_token\")",
-													"",
-													"if(!token){",
-													"     token = [dnatoken,isotopetoken];",
-													"}",
-													"",
-													"var currenttoken = token.shift();",
-													"",
-													"",
-													"pm.globals.set(\"itoken\", currenttoken);",
-													"pm.globals.set(\"token\", token);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{itoken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"type": "text",
-												"value": "application/json"
-											},
-											{
-												"key": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n\t\"type\": \"morphologys\",\n\t\"listIds\": [1081]\n\n}  "
-										},
-										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"api",
-												"specimens",
-												"{{spec_val}}",
-												"associations"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Negative Edit Pair Matching Wrong List ID",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"//This test checks whether we get the correct responses when trying to insert an invalid pair match value.",
-													"",
-													"pm.test(\"response must be valid and have a body\", function () {",
-													"     pm.response.to.be.withBody;",
-													"     pm.response.to.be.json;",
-													"});",
-													"",
-													"pm.test(\"Check if object contains all provided properties\", function () {",
-													"    var jsonData = pm.response.json();",
-													"    pm.expect(jsonData).to.have.property(\"data\");",
-													"});",
-													"",
-													" pm.test(\"Check if correct values are returned\", function () {",
-													"    var jsonData = pm.response.json();",
-													"    pm.expect(jsonData.data).to.eql(\"Specimens update unsuccessful.\");",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{org_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"type": "text",
-												"value": "application/json"
-											},
-											{
-												"key": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n\t\"type\": \"pairs\",\n\t\"listIds\":[123412341234]\n}      "
-										},
-										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"api",
-												"specimens",
-												"{{spec_val}}",
-												"associations"
-											]
-										},
-										"description": "Put for Pair Matching"
-									},
-									"response": []
-								},
-								{
-									"name": "Negative Edit Articulations invalid  id values",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"// This test attempts to add articulations with invalid articulation ids. \r",
-													"\r",
-													"pm.test(\"response must be not valid and not have a body\", function () {\r",
-													"     pm.response.to.not.be.ok;\r",
-													"});\r",
-													"\r",
-													"// postman.setNextRequest(\"Negative Edit Articulations Invalid bone\")\r",
-													"\r",
-													"\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{org_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "\r\n\t{\r\n\t\"type\": \"articulations\",\r\n\t\"listIds\": [xxxx, 1abc, 1 bc, 0000, 99999, a%9!]\r\n    \r\n\r\n}   \r\n  \r\n\r\n      "
-										},
-										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"api",
-												"specimens",
-												"{{spec_val}}",
-												"associations"
-											],
-											"query": [
-												{
-													"key": "type",
-													"value": "articulations",
-													"disabled": true
-												}
-											]
-										},
-										"description": "Negative tests for adding or updating articulations to a specimen."
-									},
-									"response": []
-								},
-								{
-									"name": "Negative Edit Refits",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"// This negative test is to edit a Refits giving missing parameters/ invalid data in the body and checking if the api adds the new/ edit a refit.",
-													"",
-													"pm.test(\"Missing parameters\", function () {",
-													"    var jsonData = pm.response.json();",
-													"     console.log(jsonData)",
-													"       pm.expect(jsonData.data).to.be.oneOf([\"Bad request: missing request parameters\",\"Bad request: unsupported association type\"]);",
-													"   ",
-													"});",
-													"",
-													"",
-													"pm.test(\"response must be not valid and not have a body\", function () {",
-													"     pm.response.to.not.be.ok;",
-													"});",
-													"",
-													"pm.test(\"Content-Type header is application/json\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{org_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n\t\"type\": \"refits\"\n}   "
-										},
-										"url": {
-											"raw": "{{base_url}}/api/specimens/{{spec_val}}/associations?type=refits",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"api",
-												"specimens",
-												"{{spec_val}}",
-												"associations"
-											],
-											"query": [
-												{
-													"key": "type",
-													"value": "refits"
-												}
-											]
-										}
 									},
 									"response": []
 								},
