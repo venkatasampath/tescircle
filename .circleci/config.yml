@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   newman: postman/newman@0.0.2
-jobs:
+API-jobs:
   Specimen-collection-run:
     executor: newman/postman-newman-docker
     steps:
@@ -14,7 +14,7 @@ jobs:
 workflows:
   version: 2
   workflow:
-    jobs:
+    API-jobs:
       - Specimen-collection-run
 
       
