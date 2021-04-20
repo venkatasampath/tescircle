@@ -14,9 +14,9 @@ jobs:
 workflows:
   version: 2
   workflow:
-   "Hello Workflow":
-     jobs:
-       - Specimen-collection-run
+    "Hello Workflow":
+      jobs:
+        - Specimen-collection-run
 
       
     
